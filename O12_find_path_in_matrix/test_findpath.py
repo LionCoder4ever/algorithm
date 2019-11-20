@@ -1,7 +1,7 @@
 import unittest
 from findpath import findPath
 
-class TestFindMin(unittest.TestCase):
+class TestFindPath(unittest.TestCase):
 
     def testInvalidInputNull(self):
         with self.assertRaises(ValueError):

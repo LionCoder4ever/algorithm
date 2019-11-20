@@ -1,7 +1,7 @@
 import unittest
 from cutrope import dpcut
 
-class TestFindMin(unittest.TestCase):
+class TestDpCut(unittest.TestCase):
 
     def testInvalidInputNull(self):
         with self.assertRaises(ValueError):
