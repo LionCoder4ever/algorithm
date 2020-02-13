@@ -1,35 +1,6 @@
 package main
 
-import "fmt"
-
-func PrintLNodes(node *LNode) {
-	for cur := node.Next; cur != nil; cur = cur.Next {
-		fmt.Printf("%d  ", cur.Data)
-	}
-	fmt.Println()
-}
-
-type LNode struct {
-	Data int
-	Next *LNode
-}
-
-func CreateNodes() (l1, l2 *LNode) {
-	l1, l2 = &LNode{}, &LNode{}
-	cur := l1
-	for i := 1; i < 7; i++ {
-		cur.Next = &LNode{}
-		cur.Next.Data = i + 2
-		cur = cur.Next
-	}
-	cur = l2
-	for i := 9; i > 4; i-- {
-		cur.Next = &LNode{}
-		cur.Next.Data = i
-		cur = cur.Next
-	}
-	return
-}
+import . "util"
 
 func Add(l1, l2 *LNode) (result *LNode) {
 	if l1 == nil || l1.Next == nil {

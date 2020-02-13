@@ -1,27 +1,9 @@
 package main
 
-import "fmt"
-
-func PrintLNodes(node *LNode) {
-	for cur := node.Next; cur != nil; cur = cur.Next {
-		fmt.Printf("%d  ", cur.Data)
-	}
-	fmt.Println()
-}
-
-type LNode struct {
-	Data int
-	Next *LNode
-}
-
-func CreateLNodes(node *LNode, size int) {
-	cur := node
-	for i := 1; i < size; i++ {
-		cur.Next = &LNode{}
-		cur.Next.Data = i
-		cur = cur.Next
-	}
-}
+import (
+	"fmt"
+	. "util"
+)
 
 func findLastK(node *LNode, k int) *LNode {
 	if node == nil || node.Next == nil {

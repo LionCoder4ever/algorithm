@@ -1,28 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
-
-func CreateLNodes(node *LNode, size int) {
-	cur := node
-	for i := 1; i < size; i++ {
-		cur.Next = &LNode{}
-		cur.Next.Data = i
-		cur = cur.Next
-	}
-}
-func PrintLNodes(node *LNode) {
-	for cur := node.Next; cur != nil; cur = cur.Next {
-		fmt.Printf("%d  ", cur.Data)
-	}
-	fmt.Println()
-}
-
-type LNode struct {
-	Data int
-	Next *LNode
-}
+import . "util"
 
 func Reverse(node *LNode) *LNode {
 	if node == nil || node.Next == nil {
