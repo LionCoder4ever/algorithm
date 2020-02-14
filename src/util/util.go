@@ -31,6 +31,23 @@ func CreateNodes() (l1, l2 *LNode) {
 	return
 }
 
+func CreateLoopNodes(node *LNode, size, loopStart int) {
+	if node == nil || size <= 1 || loopStart < 1 || (loopStart >= size) {
+		return
+	}
+	cur := node
+	loopNode := &LNode{}
+	for i := 1; i < size; i++ {
+		cur.Next = &LNode{}
+		cur.Next.Data = i
+		cur = cur.Next
+		if i == loopStart {
+			loopNode = cur
+		}
+	}
+	cur.Next = loopNode
+}
+
 func CreateLNodes(node *LNode, size int) {
 	cur := node
 	for i := 1; i < size; i++ {
