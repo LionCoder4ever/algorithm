@@ -74,6 +74,19 @@ func CreateLNodes(node *LNode, size int) {
 	}
 }
 
+func CreateLNodesAndReturnSpecified(node *LNode, size, k int) (res *LNode) {
+	cur := node
+	for i := 1; i < size; i++ {
+		cur.Next = &LNode{}
+		cur.Next.Data = i
+		cur = cur.Next
+		if k == i {
+			res = cur
+		}
+	}
+	return res
+}
+
 func CreateDup(node *LNode, nums []int) {
 	for _, v := range nums {
 		node.Next = &LNode{v, nil}
