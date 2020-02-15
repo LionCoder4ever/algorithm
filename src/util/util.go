@@ -31,6 +31,23 @@ func CreateNodes() (l1, l2 *LNode) {
 	return
 }
 
+func CreateSortedNodes() (l1, l2 *LNode) {
+	l1, l2 = &LNode{}, &LNode{}
+	cur := l1
+	for i := 0; i < 7; i += 2 {
+		cur.Next = &LNode{}
+		cur.Next.Data = i + 1
+		cur = cur.Next
+	}
+	cur = l2
+	for i := 0; i < 6; i += 2 {
+		cur.Next = &LNode{}
+		cur.Next.Data = i + 2
+		cur = cur.Next
+	}
+	return
+}
+
 func CreateLoopNodes(node *LNode, size, loopStart int) {
 	if node == nil || size <= 1 || loopStart < 1 || (loopStart >= size) {
 		return
