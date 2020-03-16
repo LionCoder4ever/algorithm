@@ -18,4 +18,5 @@ func main() {
 	l.Pop()
 	fmt.Println(l.Size())
 	l.Pop()
+	f := SliceQueue{arr: make([]int, 0)}
 }
