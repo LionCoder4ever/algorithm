@@ -2,16 +2,23 @@ package com.al;
 
 class BST
 {
-    public static class Node
+    class Node
     {
         private Node left,right;
         private int val;
-        public Node(int n)
+        Node(int n)
         {
             this.val = n;
         }
     }
-    public static void preOrder(Node node){
+    void inOrder(Node node){
+        if (node == null)
+            return;
+        inOrder(node.left);
+        System.out.println("val:" + node.val);
+        inOrder(node.right);
+    }
+    void preOrder(Node node){
         if (node == null)
             return;
         System.out.println("val:" + node.val);
@@ -19,7 +26,7 @@ class BST
         preOrder(node.right);
     }
 
-    public static void insert(Node node, int n){
+    void insert(Node node, int n){
         if (node ==null)
             return;
         if (n < node.val){
@@ -37,7 +44,7 @@ class BST
         }
     }
 
-    static void delete(Node node,int data) throws Exception {
+    void delete(Node node,int data) throws Exception {
         // find node p
         Node p = node, pp = null;
         while (p != null && p.val != data){
@@ -48,8 +55,7 @@ class BST
         // not found
         if (p == null) return;
         System.out.println("=====find: "+ data);
-        // found
-        // two child
+        // found two child
         if (p.left != null && p.right != null) {
             Node minP = p.right, minPP = p;
             while(minP.left != null){
@@ -69,22 +75,5 @@ class BST
         if (pp == null) throw new Exception("del root node");
         else if (pp.left == p) pp.left = child;
         else pp.right = child;
-    }
-    public static void main(String[] args) {
-        Node root = new Node(33);
-        int[] arr = {16,50,13,18,34,58,15,17,25,51,66,19,27,55};
-        for (int i1 : arr) {
-            insert(root, i1);
-        }
-        preOrder(root);
-        System.out.println("delete nodes ===========");
-        try {
-            delete(root, 13);
-            delete(root, 18);
-            delete(root, 55);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        preOrder(root);
     }
 }
