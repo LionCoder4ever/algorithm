@@ -8,7 +8,7 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
     static StringBuilder serialhelper(TreeNode root, StringBuilder builder) {
@@ -42,6 +42,13 @@ public class TreeNode {
     // Decodes your encoded data to tree.
     public static TreeNode deserialize(String data) {
         return deserialhelper(new ArrayList<>(Arrays.asList(data.split(","))));
+    }
+
+    public static void preOrder(TreeNode t){
+        if (t == null) return;
+        System.out.println(t.val);
+        preOrder(t.left);
+        preOrder(t.right);
     }
 }
 
