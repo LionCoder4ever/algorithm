@@ -12,14 +12,15 @@ public class BTInorderTraversalLoop {
             ArrayList<Integer> al = new ArrayList<>();
             if (root == null) return al;
             Stack<TreeNode> st = new Stack<>();
-            while (root != null || !st.isEmpty()) {
-                while (root != null) {
-                    st.add(root);
-                    root = root.left;
+            TreeNode cur = root;
+            while (cur != null || !st.isEmpty()) {
+                while (cur != null) {
+                    st.add(cur);
+                    cur = cur.left;
                 }
-                root = st.pop();
-                al.add(root.val);
-                root = root.right;
+                cur = st.pop();
+                al.add(cur.val);
+                cur = cur.right;
             }
             return al;
         }
@@ -27,7 +28,7 @@ public class BTInorderTraversalLoop {
 
     public static void main(String[] args) {
         Solution sl = new BTInorderTraversalLoop().new Solution();
-        TreeNode t = TreeNode.deserialize("1,#,2,3,#,#,#");
+        TreeNode t = TreeNode.deserialize("1,2,3,#,#,4,5,#,#,#,6,7,#,#,#");
         System.out.println(sl.inorderTraversal(t));
     }
 }
