@@ -9,27 +9,18 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int n =  s.length();
-        int ans = 0;
-        int left = 0;
-        int right = 0;
         unordered_map<char, int> map;
+        int ans = 0;
 
-        for (int i=0;i<n;i++) {
-            auto search = map.find(s[i]);
-            if (search == map.end() || map[s[i]] == -1) {
-                map[s[i]] = i;
-                right++;
-            } else {
-                int preIndex = map[s[i]];
-                int newLeft = ++preIndex;
-                for (int j=left;j<newLeft;j++) {
-                    map[s[j]] = -1;
-                }
-                left = newLeft;
-                map[s[i]] = i;
-                right++;
-            } 
-            ans = max(ans, right-left);
+        for(int i=0, j=0;i<n;i++) {
+            map[s[i]] = map[s[i]] + 1;
+
+            // abcb: 左指针移动到map['b']的value为1
+            while(j <= i && map[s[i]] > 1) {
+                map[s[j]] = map[s[j]] - 1;
+                j++;
+            }
+            ans = max(ans, i - j + 1);
         }
         return ans;
     }
