@@ -12,6 +12,12 @@ public:
         int n = s.size();
 
         // 中心法
+        // aba 可以取得中心值得所有情况为
+        // a (0,0)
+        // b (1,1)
+        // c (2,2)
+        // ab (0,1)
+        // ba (1,2)
         for (int i=0;i<2 * n -1;i++) {
             int l = i / 2;
             int r = l + i % 2;
